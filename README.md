@@ -5,7 +5,7 @@ Chrome Extension that lets you easily add bookmarks to any category. Includes sp
 
 (Original Depricated) WebStore URL: https://chrome.google.com/webstore/detail/better-bookmark/pniopfmciclllcpockpkgceikipiibol
 
-**What changed From Original**
+**What changed From Original** USED AI TO UPDATE (12 Year Old Plugin)
 ===========
 
 Core migration Manifest V2 → Manifest V3
