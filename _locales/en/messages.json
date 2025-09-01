@@ -1,6 +1,6 @@
 {
-  "new": {
-    "message": "new",
-    "description": "New category caption."
-  }
+   "new": {
+      "description": "New category caption.",
+      "message": "new"
+   }
 }

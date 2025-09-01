@@ -69,15 +69,39 @@ function processBookmark(categoryId) {
 
 }
 
+
 function addBookmarkToCategory(categoryId, title, url) {
+  // 1) Find any existing bookmarks for this URL
+  chrome.bookmarks.search({ url: url }, function(results) {
+    // Normalize results to only bookmark entries (not folders)
+    var matches = (results || []).filter(function(n){ return !!n.url; });
+    if (matches.length === 0) {
+      // No existing bookmark for this URL → create fresh
+      chrome.bookmarks.create({ parentId: categoryId, title: title, url: url });
+      return;
+    }
 
-  chrome.bookmarks.create({
-    'parentId': categoryId,
-    'title': title,
-    'url': url
+    // Prefer a bookmark with the same title if present
+    var exactTitle = matches.find(function(n){ return n.title === title; }) || matches[0];
+
+    // If one already exists in the selected folder, do nothing
+    if (exactTitle.parentId === categoryId) {
+      return; // already there, avoid duplicate
+    }
+
+    // Otherwise, move the bookmark to the new folder
+    chrome.bookmarks.move(exactTitle.id, { parentId: categoryId }, function(moved) {
+      // If there were multiple duplicates elsewhere, remove them to prevent clutter
+      matches.forEach(function(n) {
+        if (n.id !== exactTitle.id) {
+          // Best-effort cleanup; ignore errors
+          try { chrome.bookmarks.remove(n.id); } catch (e) {}
+        }
+      });
+    });
   });
-
 }
+
 
 function getCurrentUrlData(callbackFn) {
 

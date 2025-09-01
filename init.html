@@ -1,1 +1,27 @@
-<script src="init.js"></script>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Better Bookmark</title>
+    <style>
+      /* Ensure the popup has a consistent size */
+      html, body { margin: 0; padding: 0; }
+      body { width: 220px; height: 440px; background: #f9f9f9;
+             font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+      .container { display: flex; flex-direction: column; height: 100%; box-sizing: border-box; padding: 8px; }
+      #search { padding: 8px; font-size: 13px; border: 1px solid #ccc; border-radius: 4px; }
+      #wrapper { margin-top: 8px; overflow-y: auto; flex: 1 1 auto; border: 1px solid #ddd; border-radius: 4px; padding: 6px; }
+      #wrapper span { display: block; padding: 6px 8px; border-radius: 4px; cursor: pointer; }
+      #wrapper span:hover { background: #f3f4f6; }
+      #wrapper span.focus { background: #e5e7eb; outline: 1px solid #9ca3af; }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input id="search" type="text" placeholder="Search bookmark folders…" autofocus />
+      <div id="wrapper"></div>
+    </div>
+    <script src="fuse.js"></script>
+    <script src="selectCategory.js"></script>
+  </body>
+</html>

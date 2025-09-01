@@ -1,46 +1,44 @@
 {
-  "manifest_version": 2,
-
-  "name": "Better Bookmark",
-  "description": "Easily add bookmarks to any category. Includes spotlight-like search with mouse/keyboard support. Default key: cmd+b (win:ctrl+b)",
-  "version": "1.3.1",
   "author": "Szymon Pilkowski",
-  "homepage_url": "https://github.com/ardcore/chrome-better-bookmark",
-  "default_locale": "en",
-
   "background": {
-    "page": "init.html"
+    "service_worker": "service-worker.js",
+    "type": "module"
   },
-
-  "icons": { 
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "chromeos": "Ctrl+B",
+        "default": "Ctrl+B",
+        "linux": "Ctrl+B",
+        "mac": "Command+B",
+        "windows": "Ctrl+B"
+      }
+    }
+  },
+  "default_locale": "en",
+  "description": "Easily add bookmarks to any category. Includes spotlight-like search with mouse/keyboard support. Default key: cmd+b (win:ctrl+b)",
+  "homepage_url": "https://github.com/ardcore/chrome-better-bookmark",
+  "icons": {
+    "128": "bookmark.png",
     "16": "bookmark.png",
-    "48": "bookmark.png",
-    "128": "bookmark.png" 
+    "48": "bookmark.png"
   },
-
-  "browser_action": {
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAialLHrzRwIgha9E2VC3TJIQ1N8X+ZwnGWzYfUjACF8k7PAGgiOdJfUGFCnyWNouL7+7mX6ZreztzrillrPhAfmA6U9PKcjtPu8iBlGtQCZ7M3RK+FeJzdFHETQcm2uSd7LfFbb7e2w8MKL/PaaNiK+gwrPuv1kbhr+edq70mwUOOy62y5Ur95ryb8Ftvy+rBFY2EBwb3Oz3GiGKZgik+/N++H/lgjPTIp42Nv+yY7sCskFJsn1Fk/mas7+JKs0vgfxiw8fuIn0oxUKSVXGh27TdoECSub+XPY7s+bgmprPr4O4OTFiH3ELr2HaCeo7CZL1VA3HEFbpAcybzuc8pyCwIDAQAB",
+  "manifest_version": 3,
+  "name": "Better Bookmark",
+  "permissions": [
+    "bookmarks",
+    "tabs",
+    "storage"
+  ],
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "version": "1.3.2",
+  "action": {
     "default_icon": {
       "19": "bookmark.png",
       "38": "bookmark.png"
     },
-    "default_title": "Better Bookmark Button",
-    "default_popup": "background.html"
-  },
-  "commands": {
-    "_execute_browser_action": {
-
-      "suggested_key": {
-        "default": "Ctrl+B",
-        "windows": "Ctrl+B",
-        "mac": "Command+B",
-        "chromeos": "Ctrl+B",
-        "linux": "Ctrl+B"
-      }
-    }
-  },
-
-  "permissions": [
-    "bookmarks",
-    "tabs"
-  ]
+    "default_popup": "init.html",
+    "default_title": "Better Bookmark Button"
+  }
 }
