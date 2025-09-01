@@ -30,3 +30,8 @@ Version bump
 ====
 
 Updated "version" to reflect the new build (e.g., 1.3.2).
+
+How To Install:
+====
+
+Go to chrome://extensions → Developer mode → Load unpacked → select the unzipped folder.
